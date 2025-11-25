@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ihsan Project — Kindness in Islam</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Inter Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- AOS Animations -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .section { padding-top: 6rem; padding-bottom: 6rem; }
+    .geometric-divider { height: 6px; background: repeating-linear-gradient(45deg, #16a34a, #16a34a 10px, #facc15 10px, #facc15 20px); border-radius: 9999px; margin: 4rem auto; width: 80%; }
+    .fade-in-up { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+    .fade-in-up.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased transition-colors duration-300 dark:bg-gray-900 dark:text-gray-100">
+
+  <!-- DARK MODE TOGGLE -->
+  <button id="darkToggle" class="fixed bottom-6 right-6 z-50 bg-green-600 text-white p-3 rounded-full shadow-lg hover:bg-green-700 transition">🌙</button>
+
+  <!-- BACK TO TOP BUTTON -->
+  <a href="#home" class="fixed bottom-6 left-6 z-50 bg-gray-800 text-white p-3 rounded-full shadow-lg hover:bg-gray-700 transition">⬆</a>
+
+  <!-- NAVBAR -->
+  <header class="bg-white dark:bg-gray-800 shadow-md fixed top-0 left-0 w-full z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+          <polyline points="2 17 12 22 22 17"></polyline>
+          <polyline points="2 12 12 17 22 12"></polyline>
+        </svg>
+        <h1 class="text-2xl font-extrabold text-green-700 dark:text-green-400">Ihsan Project</h1>
+      </div>
+      <nav class="hidden md:flex space-x-6 font-medium">
+        <a href="#home" class="hover:text-green-600 dark:hover:text-green-400">Home</a>
+        <a href="#about" class="hover:text-green-600 dark:hover:text-green-400">About</a>
+        <a href="#core" class="hover:text-green-600 dark:hover:text-green-400">Core Concepts</a>
+        <a href="#application" class="hover:text-green-600 dark:hover:text-green-400">Applications</a>
+        <a href="#programs" class="hover:text-green-600 dark:hover:text-green-400">Programs</a>
+        <a href="#reminders" class="hover:text-green-600 dark:hover:text-green-400">Reminders</a>
+        <a href="#gallery" class="hover:text-green-600 dark:hover:text-green-400">Gallery</a>
+        <a href="#contact" class="hover:text-green-600 dark:hover:text-green-400">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO, ABOUT, CORE, APPLICATIONS, PROGRAMS, REMINDERS -->
+  <!-- Existing sections here... -->
+
+  <!-- GALLERY WITH REAL IMAGES -->
+  <section id="gallery" class="section bg-white dark:bg-gray-800" data-aos="fade-up">
+    <div class="max-w-6xl mx-auto px-6">
+      <h3 class="text-4xl font-bold text-center mb-10">Gallery</h3>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <img src="https://source.unsplash.com/400x400/?islam,mosque" alt="Gallery Image 1" class="rounded-xl shadow-lg hover:scale-105 transition transform" />
+        <img src="https://source.unsplash.com/400x400/?islamic,architecture" alt="Gallery Image 2" class="rounded-xl shadow-lg hover:scale-105 transition transform" />
+        <img src="https://source.unsplash.com/400x400/?quran,book" alt="Gallery Image 3" class="rounded-xl shadow-lg hover:scale-105 transition transform" />
+        <img src="https://source.unsplash.com/400x400/?muslim,prayer" alt="Gallery Image 4" class="rounded-xl shadow-lg hover:scale-105 transition transform" />
+        <img src="https://source.unsplash.com/400x400/?charity,islam" alt="Gallery Image 5" class="rounded-xl shadow-lg hover:scale-105 transition transform" />
+        <img src="https://source.unsplash.com/400x400/?mosque,interior" alt="Gallery Image 6" class="rounded-xl shadow-lg hover:scale-105 transition transform" />
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gray-800 text-white text-center py-6 mt-12">
+    <p class="text-sm">&copy; 2025 Ihsan Project. All Rights Reserved. Hosted via GitHub Pages.</p>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+    const darkToggle = document.getElementById('darkToggle');
+    darkToggle.addEventListener('click', () => { document.documentElement.classList.toggle('dark'); });
+
+    // Scroll-triggered fade-in for interactive sections
+    const faders = document.querySelectorAll('.fade-in-up');
+    const appearOptions = { threshold: 0.2, rootMargin: '0px 0px -50px 0px' };
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll){
+      entries.forEach(entry => { if(!entry.isIntersecting) return; entry.target.classList.add('visible'); appearOnScroll.unobserve(entry.target); });
+    }, appearOptions);
+    faders.forEach(fader => { appearOnScroll.observe(fader); });
+  </script>
+</body>
+</html>
